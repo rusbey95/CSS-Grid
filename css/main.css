@@ -42,6 +42,7 @@ body{
 	/*высота и ширина всех блоков*/
 	grid-template: minmax(100px, auto) / repeat(4, 1fr);
 
+
 	/*Отступы*/
 	/*grid-column-gap: 10px;
 	grid-row-gap: 10px;*/
