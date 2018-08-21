@@ -1,17 +1,127 @@
 *{
 	box-sizing: border-box;
 }
+a{
+	transition: all 0.3s;
+	text-decoration: none;
+}
+a:hover{
+	opacity: 0.8;
+}
+ul,li{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
 body{
 	margin: 0;
 	padding: 0;
 	font:16px/18px Arial, sans-serif;
 }
 .grid_list{
+	margin-bottom: 20px;
 	display: grid;
-	grid-column: 1fr, 1fr, 1fr;
+	/*Ширина блока*/
+	/*grid-template-columns: 300px 300px 300px;*/
+	/*grid-template-columns: 1fr 2fr 1fr 200px;*/
+	/*grid-template-columns: repeat(2, 1fr 2fr);*/
+	/*grid-template-columns: 200px repeat(2, 1fr 2fr);*/
+	/*grid-template-columns: minmax(100px, 300px) 1fr 1fr;*/
+	/*grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));*/
+	/*grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));*/
+	/*grid-template-columns: repeat(4, 1fr);*/
+
+	/*Высота ряда*/
+	/*grid-template-rows: 100px 100px;*/
+	/*grid-template-rows: 200px 100px 100px;*/
+
+	/*Высота всех блоков*/
+	/*grid-auto-rows: 50px;*/
+	/*grid-auto-rows: minmax(100px, auto);*/
+	
+	/*высота и ширина всех блоков*/
+	grid-template: minmax(100px, auto) / repeat(4, 1fr);
+
+	/*Отступы*/
+	/*grid-column-gap: 10px;
+	grid-row-gap: 10px;*/
+	grid-gap: 10px;
+
+	/*Расположение блоков*/
+	/*grid-auto-flow: column;*/
+	/*grid-auto-flow: row;*/
+
+	/*align-items: center;
+	justify-items: center;*/
 }
-.grid_box{
+.grid_line:first-child{
+	/*grid-column-start: 1;
+	grid-column-end: -1;*/
+	grid-column: 1 / -1;
+	grid-row: 1 / -1;
+	/*align-self: start;
+	justify-self: center;*/
+}
+.grid_line:nth-child(2){
+	grid-column: 1;
+	grid-row: 2;
+}
+.grid_line:nth-child(3){
+	grid-column: 2 / 4;
+	grid-row: 2;
+}
+.grid_line{
 	background: #bdbdbd;
 	border: 2px solid #0e94b3;
 	padding: 10px;
+}
+.wrapper{
+	display: grid;
+	grid-gap: 20px;
+	grid-template-areas: 
+		"header"
+		"section"
+		"aside"
+		"footer";
+}
+.wrapper > *{
+	border-radius: 5px;
+}
+header{
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	background: #7de5fd;
+	padding: 10px;
+	grid-area: header;
+}
+header *{
+	color: #b55f16;
+}
+header ul{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(80px,1fr));
+}
+section{
+	padding: 10px;
+	background: red;
+	grid-area: section;
+}
+aside{
+	padding: 10px;
+	background: #bdbdbd;
+	grid-area: aside;
+}
+footer{
+	padding: 10px;
+	background: #2196f3;
+	grid-area: footer;
+}
+@media (min-width: 700px){
+	.wrapper{
+		grid-template-columns: 2fr 4fr;
+		grid-template-areas: 
+			"header header"
+			"aside section"
+			"aside footer";
+	}
 }
